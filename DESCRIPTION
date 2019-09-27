@@ -1,0 +1,21 @@
+Package: recodeR
+Type: Package
+Title: Recode Variables in A Data Frame With A Pre-Defined Mapping Table
+Version: 0.1.0
+Author: Amarin Siripanich
+Maintainer: Amarin Siripanich <amarin@dymium.org>
+Description:
+    The goal of recodeR is to make recoding super easy when you have a pre-defined mapping table. 
+    I often found myself using the dplyr::case_when function in data prepation and it can look super 
+    messy real fast when you have a lot of categories to be recoded. Hence, recodeR was born! 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Imports: 
+    magrittr,
+    data.table,
+    glue
+Suggests: 
+    testthat (>= 2.1.0)
