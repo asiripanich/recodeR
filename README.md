@@ -7,8 +7,9 @@
 
 <!-- badges: end -->
 
-The goal of recodeR is to make recoding super easy when you have a mapping table. I often found myself using the
-`dplyr::case_when` function during data prepation and it can look super messy
+The goal of recodeR is to make recoding super easy when you have a
+pre-defined mapping table. I often found myself using the
+dplyr::case\_when function in data prepation and it can look super messy
 real fast when you have a lot of categories to be recoded. Hence,
 recodeR was born\!
 
@@ -35,17 +36,17 @@ x <- data.frame(
     labour = sample(c("employed, fulltime", "employed, part-time", "unemployed"), 10, replace = TRUE)
   )
 print(x)
-#>    id gender             labour
-#> 1   1      f employed, fulltime
-#> 2   2     fe         unemployed
-#> 3   3      m         unemployed
-#> 4   4     fe         unemployed
-#> 5   5     fe employed, fulltime
-#> 6   6      m employed, fulltime
-#> 7   7     fe employed, fulltime
-#> 8   8      m employed, fulltime
-#> 9   9      f employed, fulltime
-#> 10 10     fe employed, fulltime
+#>    id gender              labour
+#> 1   1      m  employed, fulltime
+#> 2   2      f employed, part-time
+#> 3   3      m          unemployed
+#> 4   4      m          unemployed
+#> 5   5      m employed, part-time
+#> 6   6      m  employed, fulltime
+#> 7   7      m  employed, fulltime
+#> 8   8     fe employed, part-time
+#> 9   9      m  employed, fulltime
+#> 10 10      m          unemployed
 
 my_table <- data.frame(variable = c(rep("gender",3), rep("labour", 3)),
                        category = c("m", "f", "fe",
@@ -73,14 +74,14 @@ x_new <- recodeR::recode(x = x, table = my_table, verbose = TRUE)
 #> recoding.. labour from 'unemployed' to 'unemployed'
 print(x_new)
 #>     id gender     labour
-#>  1:  1 female   employed
-#>  2:  2 female unemployed
+#>  1:  1   male   employed
+#>  2:  2 female   employed
 #>  3:  3   male unemployed
-#>  4:  4 female unemployed
-#>  5:  5 female   employed
+#>  4:  4   male unemployed
+#>  5:  5   male   employed
 #>  6:  6   male   employed
-#>  7:  7 female   employed
-#>  8:  8   male   employed
-#>  9:  9 female   employed
-#> 10: 10 female   employed
+#>  7:  7   male   employed
+#>  8:  8 female   employed
+#>  9:  9   male   employed
+#> 10: 10   male unemployed
 ```
