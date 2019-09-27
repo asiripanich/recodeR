@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/"
   # out.width = "100%"
 )
 ```
@@ -18,11 +18,15 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of recodeR is to make recoding super easy when you have a pre-defined mapping table. I often found myself using the dplyr::case_when function in data prepation and it can look super messy real fast when you have a lot of categories to be recoded. Hence, recodeR was born! 
+The goal of recodeR is to make recoding super easy when you have a mapping table. I often found myself using the
+`dplyr::case_when` function for recoding and it can look super messy real fast when you have a lot of categories to be recoded. Hence, recodeR was born!
+
+My primary use for this package is when I prepare a reference sample and control tables for systhesising microdata. This is a common problem that microsimulation modellers and agent-based modellers would face in the data preparation phase.
+
 
 ## Installation
 
-You can install this package using the following commands in R with the `remote` package.
+You can install this package using the following commands in R with the `remotes` package.
 
 ``` r
 remotes::install_github("asiripanich/recodeR")
@@ -30,7 +34,7 @@ remotes::install_github("asiripanich/recodeR")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to solve a common problem with recoding:
 
 ```{r example}
 library(recodeR)

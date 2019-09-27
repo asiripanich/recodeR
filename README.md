@@ -8,15 +8,19 @@
 <!-- badges: end -->
 
 The goal of recodeR is to make recoding super easy when you have a
-pre-defined mapping table. I often found myself using the
-dplyr::case\_when function in data prepation and it can look super messy
-real fast when you have a lot of categories to be recoded. Hence,
-recodeR was born\!
+mapping table. I often found myself using the `dplyr::case_when`
+function for recoding and it can look super messy real fast when you
+have a lot of categories to be recoded. Hence, recodeR was born\!
+
+My primary use for this package is when I prepare a reference sample and
+control tables for systhesising microdata. This is a common problem that
+microsimulation modellers and agent-based modellers would face in the
+data preparation phase.
 
 ## Installation
 
 You can install this package using the following commands in R with the
-`remote` package.
+`remotes` package.
 
 ``` r
 remotes::install_github("asiripanich/recodeR")
@@ -24,7 +28,8 @@ remotes::install_github("asiripanich/recodeR")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to solve a common problem
+with recoding:
 
 ``` r
 library(recodeR)
@@ -37,16 +42,16 @@ x <- data.frame(
   )
 print(x)
 #>    id gender              labour
-#> 1   1      m  employed, fulltime
-#> 2   2      f employed, part-time
-#> 3   3      m          unemployed
+#> 1   1      f          unemployed
+#> 2   2      m employed, part-time
+#> 3   3      f  employed, fulltime
 #> 4   4      m          unemployed
-#> 5   5      m employed, part-time
-#> 6   6      m  employed, fulltime
-#> 7   7      m  employed, fulltime
-#> 8   8     fe employed, part-time
-#> 9   9      m  employed, fulltime
-#> 10 10      m          unemployed
+#> 5   5      f  employed, fulltime
+#> 6   6      f  employed, fulltime
+#> 7   7      f  employed, fulltime
+#> 8   8     fe  employed, fulltime
+#> 9   9      m employed, part-time
+#> 10 10      m  employed, fulltime
 
 my_table <- data.frame(variable = c(rep("gender",3), rep("labour", 3)),
                        category = c("m", "f", "fe",
@@ -74,14 +79,14 @@ x_new <- recodeR::recode(x = x, table = my_table, verbose = TRUE)
 #> recoding.. labour from 'unemployed' to 'unemployed'
 print(x_new)
 #>     id gender     labour
-#>  1:  1   male   employed
-#>  2:  2 female   employed
-#>  3:  3   male unemployed
+#>  1:  1 female unemployed
+#>  2:  2   male   employed
+#>  3:  3 female   employed
 #>  4:  4   male unemployed
-#>  5:  5   male   employed
-#>  6:  6   male   employed
-#>  7:  7   male   employed
+#>  5:  5 female   employed
+#>  6:  6 female   employed
+#>  7:  7 female   employed
 #>  8:  8 female   employed
 #>  9:  9   male   employed
-#> 10: 10   male unemployed
+#> 10: 10   male   employed
 ```

@@ -72,17 +72,18 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of recodeR is to make recoding super easy when you have a pre-defined mapping table. I often found myself using the dplyr::case_when function in data prepation and it can look super messy real fast when you have a lot of categories to be recoded. Hence, recodeR was born!</p>
+<p>The goal of recodeR is to make recoding super easy when you have a mapping table. I often found myself using the <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">dplyr::case_when</a></code> function for recoding and it can look super messy real fast when you have a lot of categories to be recoded. Hence, recodeR was born!</p>
+<p>My primary use for this package is when I prepare a reference sample and control tables for systhesising microdata. This is a common problem that microsimulation modellers and agent-based modellers would face in the data preparation phase.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install this package using the following commands in R with the <code>remote</code> package.</p>
+<p>You can install this package using the following commands in R with the <code>remotes</code> package.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"asiripanich/recodeR"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>This is a basic example which shows you how to solve a common problem with recoding:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(recodeR)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">## basic example code</span></a>
 <a class="sourceLine" id="cb2-3" title="3"></a>
@@ -93,15 +94,15 @@
 <a class="sourceLine" id="cb2-8" title="8">  )</a>
 <a class="sourceLine" id="cb2-9" title="9"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(x)</a>
 <a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;    id gender              labour</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 1   1      m employed, part-time</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; 2   2      f          unemployed</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt; 3   3     fe          unemployed</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 4   4      f employed, part-time</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; 5   5      m  employed, fulltime</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; 6   6      f employed, part-time</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 7   7      m employed, part-time</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 8   8     fe employed, part-time</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; 9   9     fe  employed, fulltime</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 1   1      m          unemployed</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; 2   2      f employed, part-time</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt; 3   3      f employed, part-time</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 4   4      f  employed, fulltime</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; 5   5     fe  employed, fulltime</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; 6   6      m employed, part-time</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt; 7   7     fe          unemployed</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 8   8      m  employed, fulltime</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; 9   9      m          unemployed</span></a>
 <a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; 10 10      f employed, part-time</span></a>
 <a class="sourceLine" id="cb2-21" title="21"></a>
 <a class="sourceLine" id="cb2-22" title="22">my_table &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">variable =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="st">"gender"</span>,<span class="dv">3</span>), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="st">"labour"</span>, <span class="dv">3</span>)),</a>
@@ -130,15 +131,15 @@
 <a class="sourceLine" id="cb2-45" title="45"><span class="co">#&gt; recoding.. labour from 'unemployed' to 'unemployed'</span></a>
 <a class="sourceLine" id="cb2-46" title="46"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(x_new)</a>
 <a class="sourceLine" id="cb2-47" title="47"><span class="co">#&gt;     id gender     labour</span></a>
-<a class="sourceLine" id="cb2-48" title="48"><span class="co">#&gt;  1:  1   male   employed</span></a>
-<a class="sourceLine" id="cb2-49" title="49"><span class="co">#&gt;  2:  2 female unemployed</span></a>
-<a class="sourceLine" id="cb2-50" title="50"><span class="co">#&gt;  3:  3 female unemployed</span></a>
+<a class="sourceLine" id="cb2-48" title="48"><span class="co">#&gt;  1:  1   male unemployed</span></a>
+<a class="sourceLine" id="cb2-49" title="49"><span class="co">#&gt;  2:  2 female   employed</span></a>
+<a class="sourceLine" id="cb2-50" title="50"><span class="co">#&gt;  3:  3 female   employed</span></a>
 <a class="sourceLine" id="cb2-51" title="51"><span class="co">#&gt;  4:  4 female   employed</span></a>
-<a class="sourceLine" id="cb2-52" title="52"><span class="co">#&gt;  5:  5   male   employed</span></a>
-<a class="sourceLine" id="cb2-53" title="53"><span class="co">#&gt;  6:  6 female   employed</span></a>
-<a class="sourceLine" id="cb2-54" title="54"><span class="co">#&gt;  7:  7   male   employed</span></a>
-<a class="sourceLine" id="cb2-55" title="55"><span class="co">#&gt;  8:  8 female   employed</span></a>
-<a class="sourceLine" id="cb2-56" title="56"><span class="co">#&gt;  9:  9 female   employed</span></a>
+<a class="sourceLine" id="cb2-52" title="52"><span class="co">#&gt;  5:  5 female   employed</span></a>
+<a class="sourceLine" id="cb2-53" title="53"><span class="co">#&gt;  6:  6   male   employed</span></a>
+<a class="sourceLine" id="cb2-54" title="54"><span class="co">#&gt;  7:  7 female unemployed</span></a>
+<a class="sourceLine" id="cb2-55" title="55"><span class="co">#&gt;  8:  8   male   employed</span></a>
+<a class="sourceLine" id="cb2-56" title="56"><span class="co">#&gt;  9:  9   male unemployed</span></a>
 <a class="sourceLine" id="cb2-57" title="57"><span class="co">#&gt; 10: 10 female   employed</span></a></code></pre></div>
 </div>
 </div>
