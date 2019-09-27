@@ -8,7 +8,7 @@
 <!-- badges: end -->
 
 The goal of recodeR is to make recoding super easy when you have a mapping table. I often found myself using the
-`dplyr::case_when` function during data prepation and it can look super messy
+`dplyr::case_when` function for recoding and it can look super messy
 real fast when you have a lot of categories to be recoded. Hence,
 recodeR was born\!
 
