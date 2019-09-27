@@ -1,3 +1,4 @@
 #' @import data.table
-#' @import glue
+#' @importFrom glue glue
+#' @importFrom magrittr %>%
 "_PACKAGE"
