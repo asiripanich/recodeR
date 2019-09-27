@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# recodeR
+# recodeR <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -36,17 +36,17 @@ x <- data.frame(
     labour = sample(c("employed, fulltime", "employed, part-time", "unemployed"), 10, replace = TRUE)
   )
 print(x)
-#>    id gender              labour
-#> 1   1      m          unemployed
-#> 2   2      f employed, part-time
-#> 3   3      f          unemployed
-#> 4   4     fe employed, part-time
-#> 5   5      f          unemployed
-#> 6   6     fe          unemployed
-#> 7   7      m          unemployed
-#> 8   8     fe  employed, fulltime
-#> 9   9     fe  employed, fulltime
-#> 10 10     fe employed, part-time
+#>    id gender             labour
+#> 1   1      f employed, fulltime
+#> 2   2     fe         unemployed
+#> 3   3      m         unemployed
+#> 4   4     fe         unemployed
+#> 5   5     fe employed, fulltime
+#> 6   6      m employed, fulltime
+#> 7   7     fe employed, fulltime
+#> 8   8      m employed, fulltime
+#> 9   9      f employed, fulltime
+#> 10 10     fe employed, fulltime
 
 my_table <- data.frame(variable = c(rep("gender",3), rep("labour", 3)),
                        category = c("m", "f", "fe",
@@ -74,14 +74,14 @@ x_new <- recodeR::recode(x = x, table = my_table, verbose = TRUE)
 #> recoding.. labour from 'unemployed' to 'unemployed'
 print(x_new)
 #>     id gender     labour
-#>  1:  1   male unemployed
-#>  2:  2 female   employed
-#>  3:  3 female unemployed
-#>  4:  4 female   employed
-#>  5:  5 female unemployed
-#>  6:  6 female unemployed
-#>  7:  7   male unemployed
-#>  8:  8 female   employed
+#>  1:  1 female   employed
+#>  2:  2 female unemployed
+#>  3:  3   male unemployed
+#>  4:  4 female unemployed
+#>  5:  5 female   employed
+#>  6:  6   male   employed
+#>  7:  7 female   employed
+#>  8:  8   male   employed
 #>  9:  9 female   employed
 #> 10: 10 female   employed
 ```
