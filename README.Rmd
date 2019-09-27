@@ -24,7 +24,7 @@ The goal of recodeR is to make recoding super easy when you have a pre-defined m
 You can install this package using the following commands in R with the `remote` package.
 
 ``` r
-remotes::install_github("recodeR")
+remotes::install_github("asiripanich/recodeR")
 ```
 
 ## Example
@@ -47,6 +47,7 @@ my_table <- data.frame(variable = c(rep("gender",3), rep("labour", 3)),
                                     "employed, fulltime", "employed, part-time", "unemployed"),
                        new_category = c("male", "female", "female",
                                         "employed", "employed", "unemployed"))
+print(my_table)
 
 x_new <- recodeR::recode(x = x, table = my_table, verbose = TRUE)
 print(x_new)
