@@ -12,10 +12,12 @@ The goal of recodeR is to make recoding super easy when you have a mapping table
 real fast when you have a lot of categories to be recoded. Hence,
 recodeR was born\!
 
+My primary use for this package is when I prepare a reference sample and control tables for systhesising microdata. This is a common problem that microsimulation modellers and agent-based modellers would face in the data preparation phase.
+
 ## Installation
 
 You can install this package using the following commands in R with the
-`remote` package.
+`remotes` package.
 
 ``` r
 remotes::install_github("asiripanich/recodeR")
@@ -23,7 +25,7 @@ remotes::install_github("asiripanich/recodeR")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to solve a common problem with recoding:
 
 ``` r
 library(recodeR)
